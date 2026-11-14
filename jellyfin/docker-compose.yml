@@ -1,0 +1,12 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - /media/nin/CES_X64FREV:/media:ro
+    tmpfs:
+      - /cache/transcodes:size=1g
